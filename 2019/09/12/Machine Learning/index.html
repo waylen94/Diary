@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="concrete content2017 New New New TensorFlow CODE repository Introduction Artifical Neural Network[Optimization](https://en.wikipedia.org/wiki/Gradient_descent)  **Brief**: Input -&amp;gt; Process layer 1">
+<meta name="keywords" content="Machine Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Machine Learning">
+<meta property="og:url" content="https://waylen94.github.io/Diary/2019/09/12/Machine Learning/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="concrete content2017 New New New TensorFlow CODE repository Introduction Artifical Neural Network[Optimization](https://en.wikipedia.org/wiki/Gradient_descent)  **Brief**: Input -&amp;gt; Process layer 1">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://www.tensorflow.org/images/tensors_flowing.gif">
+<meta property="og:image" content="http://cs231n.github.io/assets/nn3/opt2.gif">
+<meta property="og:image" content="http://cs231n.github.io/assets/nn3/opt1.gif">
+<meta property="og:image" content="https://morvanzhou.github.io/static/results/tensorflow/5_02_1.png">
+<meta property="og:updated_time" content="2020-01-27T10:58:48.517Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Machine Learning">
+<meta name="twitter:description" content="concrete content2017 New New New TensorFlow CODE repository Introduction Artifical Neural Network[Optimization](https://en.wikipedia.org/wiki/Gradient_descent)  **Brief**: Input -&amp;gt; Process layer 1">
+<meta name="twitter:image" content="https://www.tensorflow.org/images/tensors_flowing.gif">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/Diary/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/Diary/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/Diary/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Machine Learning</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/Diary/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/Diary/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/Diary/">Home</a></li>
+         
+          <li><a href="/Diary/about/">About</a></li>
+         
+          <li><a href="/Diary/archives/">Writing</a></li>
+         
+          <li><a href="/Diary/projects_url">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/Diary/2019/09/12/20190912-Diary-NO-1/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/Diary/2019/09/11/11-09-2019/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://waylen94.github.io/Diary/2019/09/12/Machine Learning/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://waylen94.github.io/Diary/2019/09/12/Machine Learning/&text=Machine Learning"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://waylen94.github.io/Diary/2019/09/12/Machine Learning/&title=Machine Learning"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://waylen94.github.io/Diary/2019/09/12/Machine Learning/&is_video=false&description=Machine Learning"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Machine Learning&body=Check out this article: https://waylen94.github.io/Diary/2019/09/12/Machine Learning/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://waylen94.github.io/Diary/2019/09/12/Machine Learning/&title=Machine Learning"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://waylen94.github.io/Diary/2019/09/12/Machine Learning/&title=Machine Learning"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://waylen94.github.io/Diary/2019/09/12/Machine Learning/&title=Machine Learning"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://waylen94.github.io/Diary/2019/09/12/Machine Learning/&title=Machine Learning"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://waylen94.github.io/Diary/2019/09/12/Machine Learning/&name=Machine Learning&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://waylen94.github.io/Diary/2019/09/12/Machine Learning/&t=Machine Learning"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#concrete-content"><span class="toc-number">1.</span> <span class="toc-text">concrete content</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction-Artifical-Neural-Network"><span class="toc-number">1.1.</span> <span class="toc-text">Introduction Artifical Neural Network</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Preparation-Tensor-Flow"><span class="toc-number">1.2.</span> <span class="toc-text">Preparation(Tensor Flow):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Basis-Architecture"><span class="toc-number">1.3.</span> <span class="toc-text">Basis Architecture</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#tensor-flow-basis"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">tensor flow basis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tensor-flow-basis-coding"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">tensor flow basis coding</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tf-Session"><span class="toc-number">1.3.0.3.</span> <span class="toc-text">tf Session</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tf-Variable"><span class="toc-number">1.3.0.4.</span> <span class="toc-text">tf Variable</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tf-Placeholder"><span class="toc-number">1.3.0.5.</span> <span class="toc-text">tf Placeholder</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tf-Activation-Function"><span class="toc-number">1.3.0.6.</span> <span class="toc-text">tf Activation Function</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#manual-add-layer"><span class="toc-number">1.3.0.7.</span> <span class="toc-text">manual add layer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Basis-TensorFlow"><span class="toc-number">1.3.0.8.</span> <span class="toc-text">Basis TensorFlow</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Speeding-up-training-and-Optimizer"><span class="toc-number">1.3.0.9.</span> <span class="toc-text">Speeding up training and Optimizer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tensorboard"><span class="toc-number">1.3.0.10.</span> <span class="toc-text">Tensorboard</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Content"><span class="toc-number">1.4.</span> <span class="toc-text">Advanced Content</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Machine Learning
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Hexo</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-09-11T21:43:16.000Z" itemprop="datePublished">2019-09-12</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/Diary/categories/Knowledge/">Knowledge</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/Diary/tags/Machine-Learning/">Machine Learning</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="concrete-content"><a href="#concrete-content" class="headerlink" title="concrete content"></a>concrete content</h1><p><a href="https://github.com/MorvanZhou/Tensorflow-Tutorial" target="_blank" rel="noopener">2017 New New New TensorFlow CODE repository</a></p>
+<h2 id="Introduction-Artifical-Neural-Network"><a href="#Introduction-Artifical-Neural-Network" class="headerlink" title="Introduction Artifical Neural Network"></a>Introduction <a href="https://en.wikipedia.org/wiki/Artificial_neural_network" target="_blank" rel="noopener">Artifical Neural Network</a></h2><pre><code>[Optimization](https://en.wikipedia.org/wiki/Gradient_descent)
+
+**Brief**: Input -&gt; Process layer 1 2 3 ......-&gt; Results
+        result provide feedback (reward) 
+        Activation function
+        example(Training data) -&gt; Training
+        final(testing data) -&gt; testing
+
+**Definition**: Artifical neural network(ANN) is a collection of connected artifician neurons, which inspired by Bio-neural network.
+supervised or not: manualley labeld or not
+
+**Method**: primarily focus on oprimization method 
+        Gradient Descent
+        Cost function
+        obtaining Global minimum or local Minimum
+        a first order iterative optimization algorithm
+
+        asymptotic rate of convergence is inferior???</code></pre><h2 id="Preparation-Tensor-Flow"><a href="#Preparation-Tensor-Flow" class="headerlink" title="Preparation(Tensor Flow):"></a>Preparation(Tensor Flow):</h2><pre><code>Installation
+&apos;&apos;&apos;
+    pip3 install --upgrade tensorflow
+
+    import tensorflow
+&apos;&apos;&apos;
+Input(example) -&gt; Output(Results)
+
+usage: prediction
+
+overfitting line </code></pre><p><a href="https://en.wikipedia.org/wiki/Overfitting" target="_blank" rel="noopener">more</a><br>    underfitting line</p>
+<h2 id="Basis-Architecture"><a href="#Basis-Architecture" class="headerlink" title="Basis Architecture"></a>Basis Architecture</h2><h4 id="tensor-flow-basis"><a href="#tensor-flow-basis" class="headerlink" title="tensor flow basis"></a>tensor flow basis</h4><pre><code>input -&gt; hide layer -&gt; output
+1. input : dataset 1 2 3 4.......
+2. hide layer: weights, biases, activation rules
+3. output
+4. Gradient Descent optimize metrics......</code></pre><p><img src="https://www.tensorflow.org/images/tensors_flowing.gif" alt="Gradient Descent"></p>
+<h4 id="tensor-flow-basis-coding"><a href="#tensor-flow-basis-coding" class="headerlink" title="tensor flow basis coding"></a>tensor flow basis coding</h4><pre><code>key idea of TF: error back-propagation algorithm through optimization method
+optimization method this time: gradient descent</code></pre><p><a href="https://github.com/MorvanZhou/tutorials/blob/master/tensorflowTUT/tf5_example2/full_code.py" target="_blank" rel="noopener">Full Code</a></p>
+<h4 id="tf-Session"><a href="#tf-Session" class="headerlink" title="tf Session"></a>tf Session</h4><p><a href="https://github.com/waylen94/Machine-Learning-Case-Study/blob/master/Tensorflow/TensorFlow_UseCase_session.py" target="_blank" rel="noopener">FuLL Code</a></p>
+<h4 id="tf-Variable"><a href="#tf-Variable" class="headerlink" title="tf Variable"></a>tf Variable</h4><p><a href="https://github.com/waylen94/Machine-Learning-Case-Study/blob/master/Tensorflow/TensorFlow_UseCase_variable.py" target="_blank" rel="noopener">Full Code</a></p>
+<h4 id="tf-Placeholder"><a href="#tf-Placeholder" class="headerlink" title="tf Placeholder"></a>tf Placeholder</h4><h4 id="tf-Activation-Function"><a href="#tf-Activation-Function" class="headerlink" title="tf Activation Function"></a>tf Activation Function</h4><h4 id="manual-add-layer"><a href="#manual-add-layer" class="headerlink" title="manual add layer"></a>manual add layer</h4><p><a href="https://github.com/waylen94/Machine-Learning-Case-Study/blob/master/Tensorflow/TensorFlow_add_layer.py" target="_blank" rel="noopener">Full code</a></p>
+<h4 id="Basis-TensorFlow"><a href="#Basis-TensorFlow" class="headerlink" title="Basis TensorFlow"></a>Basis TensorFlow</h4><pre><code>1. basis architecture</code></pre><p><a href="https://github.com/waylen94/Machine-Learning-Case-Study/blob/master/Tensorflow/TensorFlow_0917_basis_architecture.py" target="_blank" rel="noopener">Full Code</a><br>    2. visualization<br><a href="https://github.com/waylen94/Machine-Learning-Case-Study/blob/master/Tensorflow/TensorFlow_0917_basis_architecture_visualization.py" target="_blank" rel="noopener">Full code</a></p>
+<h4 id="Speeding-up-training-and-Optimizer"><a href="#Speeding-up-training-and-Optimizer" class="headerlink" title="Speeding up training and Optimizer"></a>Speeding up training and Optimizer</h4><pre><code>1. stochastic Gradient Descent(SGD)
+2. Momentum (using push) 
+3. AdaGrad (using rule to discpline)
+4. RMSProp (basic rule + rule)
+5. Adam (fully fule + rule)</code></pre><p><img src="http://cs231n.github.io/assets/nn3/opt2.gif" alt="diagram"><br><img src="http://cs231n.github.io/assets/nn3/opt1.gif" alt="diagram"><br><a href="http://cs231n.github.io/neural-networks-3/" target="_blank" rel="noopener">more link</a></p>
+<h4 id="Tensorboard"><a href="#Tensorboard" class="headerlink" title="Tensorboard"></a>Tensorboard</h4><p>inputs -&gt; layer 1 2 3 4….. -&gt;outputs<br>overview graph:       as well as components graph:<br><a href="https://github.com/waylen94/Machine-Learning-Case-Study/blob/master/Tensorflow/TensorFlow_0917_tensorboard.py" target="_blank" rel="noopener">Full code</a><br><a href="https://github.com/waylen94/Machine-Learning-Case-Study/blob/master/Tensorflow/TensorFlow_0917_tensorboard2.py" target="_blank" rel="noopener">Full code</a></p>
+<h2 id="Advanced-Content"><a href="#Advanced-Content" class="headerlink" title="Advanced Content"></a>Advanced Content</h2><ol>
+<li><p>classification solution case<br> regression problem sovling -&gt; output value<br> classification problem solving -&gt; output possiblity</p>
+<p> activation function:</p>
+<pre><code>regression using relu
+classification using softmax</code></pre><p> cost function:</p>
+<pre><code>regression: real - prediction
+classification: cross_entropy</code></pre><p> optimizer: both gradient descent</p>
+</li>
+</ol>
+<p><a href="https://github.com/waylen94/Machine-Learning-Case-Study/blob/master/Tensorflow/TensorFlow_0917_advanced_classification.py" target="_blank" rel="noopener">Full code</a></p>
+<ol start="2">
+<li><p>solving overfitting<br><img src="https://morvanzhou.github.io/static/results/tensorflow/5_02_1.png" alt="diagram from MOFAN"><br> For general situation rather than specific training data<br> states: underfit just_right overfit<br> Tensorflow solve: drop out<br><a href="https://github.com/waylen94/Machine-Learning-Case-Study/blob/master/Tensorflow/TensorFlow_0917_advanced_overfitting.py" target="_blank" rel="noopener">Full code</a></p>
+</li>
+<li><p>Convoltutional neural network(CNN)<br> Purpose: image text vedio (computer vision recognization</p>
+<p> Method: object Components.s.s -&gt; combine -&gt; combine ..-&gt;.-&gt;…. -&gt; object classfied</p>
+<p> pooling? </p>
+<p> example: image-&gt;covolution-&gt;max pooling-&gt;connected -&gt; classified</p>
+</li>
+</ol>
+<p><a href="https://classroom.udacity.com/courses/ud730/lessons/6377263405/concepts/64063017560923" target="_blank" rel="noopener">great resource</a></p>
+<ol start="4">
+<li><p>CNN buidling 1<br> <strong>code concept</strong>:image recognition, gradually compress hight and width in order to increase thickness (processing data in validation below ‘cp’) </p>
+<p> CNN filtering quintessence</p>
+<p> <strong>Overview picture in example</strong>:</p>
+<p> image -&gt; convolutionary -&gt; pooling (cp)-&gt; cp …….-&gt; tensorflow(fully connected tf) -&gt; tf -&gt; classifer  </p>
+<p> key attribute in code: patch(compression related with padding) stride(step related pooling)</p>
+<p> padding method: valid padding ; same padding<br> pooling method: max pooling ; average pooling</p>
+</li>
+<li><p>CNN building 2<br> TensorFlow Libraries implment CNN<br> conv2a function<br> pooling module<br> padding module<br> key features: stride, patch, padding, pooling<br><a href="https://github.com/waylen94/Machine-Learning-Case-Study/blob/master/Tensorflow/TensorFlow_0917_advanced_CNN2.py" target="_blank" rel="noopener">Full code</a></p>
+</li>
+<li><p>CNN building 3<br> feeling: capture data -&gt; reframe(reshape) data -&gt; optimizer data<br> practical: padding, pooling, conv2d, adamoptimizer </p>
+</li>
+</ol>
+<p><a href="https://github.com/waylen94/Machine-Learning-Case-Study/blob/master/Tensorflow/TensorFlow_0917_advanced_CNN3.py" target="_blank" rel="noopener">Full code</a></p>
+<ol start="7">
+<li><p>Saver</p>
+<p> purpose: store the trained parameter like(weights and biases)<br> issue: save parameters -&gt; reload parameters<br> key: tf.train.saver</p>
+</li>
+</ol>
+<p><a href="https://github.com/waylen94/Machine-Learning-Case-Study/blob/master/Tensorflow/TensorFlow_0917_advanced_saver.py" target="_blank" rel="noopener">Full code</a></p>
+<ol start="8">
+<li><p>Recurrent Neural Network (RNN) 1<br> key: order matter issue solutions (sentence)</p>
+<p> common method: long term short term memory (LSTM)</p>
+<p> collecting continum experience from previous experience(state) -&gt; incfluence -&gt; next experience (state)</p>
+<p> using LSTM enable avoid </p>
+<pre><code>gradient vanishing and gradient exploding </code></pre><p> LSTM structure: Write(pre) - forget (mid) - read (after) ————three gates handle</p>
+</li>
+</ol>
+<p><a href="https://classroom.udacity.com/courses/ud730/lessons/6377263405/concepts/64063017560923#" target="_blank" rel="noopener">resource1</a><br><a href="https://classroom.udacity.com/courses/ud730/lessons/6378983156/concepts/63770919610923#" target="_blank" rel="noopener">resource2</a>    </p>
+<ol start="9">
+<li><p>Recurrent Neural Network (RNN) 2 Classification<br>RNN LSTM</p>
+<p> inputs hiden layer -&gt; Cell -&gt; outputs hiden layer</p>
+<p> every cell has write forget read gates function</p>
+<pre><code>solving for gradient vanishing or gradient exploding
+
+1. initial_states
+2. c_state
+3. m_state (basis only have this state)</code></pre><p> Tensorflow<br> ‘’’</p>
+<pre><code>tf.nn.dynamic_rnn()</code></pre><p> ‘’’<br> difficulties: time_major, transpose</p>
+</li>
+</ol>
+<p><a href="https://github.com/waylen94/Machine-Learning-Case-Study/blob/master/Tensorflow/TensorFlow_0919_advanced_RNN_1.py" target="_blank" rel="noopener">Full Code</a></p>
+<p>Noremal style or Tensorflow style<br><a href="https://r2rt.com/styles-of-truncated-backpropagation.html" target="_blank" rel="noopener">Extensive BPTT</a></p>
+<ol start="10">
+<li><p>Recurrent Neural Network (RNN) 3 Regression</p>
+<ol>
+<li><p>data handling — batch</p>
+</li>
+<li><p>LSTM (input, cell, output)</p>
+</li>
+<li><p>Optimizer<br>‘’’<br> key attribute: input_size, output_size, cell_size</p>
+<ol>
+<li><p>input layer</p>
+</li>
+<li><p>cell<br> Basic LSTM Cell<br> Lstm_cell.zero_state<br> tf.nn.dynamic_rnn</p>
+</li>
+<li><p>output leyer<br> losses = tf.nn.seq2seq.sequence_loss_by_example()</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>‘’’</p>
+<p>general difficulties: </p>
+<pre><code>datashape =&gt; reshape function</code></pre></li>
+</ol>
+<p>RNN key: Truncate Backpropagration  Again:<br><a href="https://r2rt.com/styles-of-truncated-backpropagation.html" target="_blank" rel="noopener">Extensive BPTT</a></p>
+<p><a href="https://github.com/waylen94/Machine-Learning-Case-Study/blob/master/Tensorflow/TensorFlow_0919_advanced_RNN_2.py" target="_blank" rel="noopener">Full Code</a></p>
+<ol start="11">
+<li><p>Recurrent Neural Network (RNN) 4 Visualization</p>
+<p>plt_plot()</p>
+</li>
+</ol>
+<p><a href="https://github.com/waylen94/Machine-Learning-Case-Study/blob/master/Tensorflow/TensorFlow_0919_advanced_Aensorflow_visualization.py" target="_blank" rel="noopener">Full Code</a></p>
+<ol start="12">
+<li><p>Autoencoder<br>Much like PCA<br>it is unsupervised learning<br>feel like trained compiler<br>encoder -&gt; activation function<br>decoder -&gt; activation function</p>
+<p>tf.nn.sigmoid</p>
+<p>difficulties: learning rate</p>
+</li>
+</ol>
+<p><a href="https://github.com/waylen94/Machine-Learning-Case-Study/blob/master/Tensorflow/TensorFlow_0919_advanced_Autoencoder.py" target="_blank" rel="noopener">Full Code</a></p>
+<ol start="13">
+<li><p>Scope<br>corresponded with variable<br>‘’’<br>tf.name_scope<br>tf.variable_scope</p>
+<pre><code>tf.get_variable() 
+tf.Variable()</code></pre><p>‘’’</p>
+<p>Understanding scope mechanism can reuse variable<br>especially in situation(RNN  TrainConfig &amp;&amp; TestConfig)<br>‘’’</p>
+<pre><code>scope.reuse_variables()</code></pre><p>‘’’<br><a href="https://github.com/waylen94/Machine-Learning-Case-Study/blob/master/Tensorflow/TensorFlow_0919_advanced_scope0.py" target="_blank" rel="noopener">Full Code</a><br><a href="https://github.com/waylen94/Machine-Learning-Case-Study/blob/master/Tensorflow/TensorFlow_0919_advanced_scope.py" target="_blank" rel="noopener">Full Code</a></p>
+</li>
+</ol>
+<ol start="14">
+<li>Batch Normalization (BN)<br>significance: if not, neurons lose efficacy, sensor capacity vanish<br>procedure:forwarding layer process BN after every time activation function</li>
+</ol>
+<p><a href="https://github.com/waylen94/Machine-Learning-Case-Study/blob/master/Tensorflow/TensorFlow_0919_advanced_BatchNormalization.py" target="_blank" rel="noopener">Full Code</a></p>
+<p><a href="https://arxiv.org/abs/1502.03167" target="_blank" rel="noopener">extensive resource</a></p>
+<ol start="15">
+<li>Transfer Learning </li>
+</ol>
+<p>(continum to learn when start again these bracket should be vanished)</p>
+<pre><code>current exsited model to operate</code></pre><p><a href="http://cs231n.github.io/transfer-learning/" target="_blank" rel="noopener">Extensive resource</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/Diary/">Home</a></li>
+         
+          <li><a href="/Diary/about/">About</a></li>
+         
+          <li><a href="/Diary/archives/">Writing</a></li>
+         
+          <li><a href="/Diary/projects_url">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#concrete-content"><span class="toc-number">1.</span> <span class="toc-text">concrete content</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction-Artifical-Neural-Network"><span class="toc-number">1.1.</span> <span class="toc-text">Introduction Artifical Neural Network</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Preparation-Tensor-Flow"><span class="toc-number">1.2.</span> <span class="toc-text">Preparation(Tensor Flow):</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Basis-Architecture"><span class="toc-number">1.3.</span> <span class="toc-text">Basis Architecture</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#tensor-flow-basis"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">tensor flow basis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tensor-flow-basis-coding"><span class="toc-number">1.3.0.2.</span> <span class="toc-text">tensor flow basis coding</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tf-Session"><span class="toc-number">1.3.0.3.</span> <span class="toc-text">tf Session</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tf-Variable"><span class="toc-number">1.3.0.4.</span> <span class="toc-text">tf Variable</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tf-Placeholder"><span class="toc-number">1.3.0.5.</span> <span class="toc-text">tf Placeholder</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tf-Activation-Function"><span class="toc-number">1.3.0.6.</span> <span class="toc-text">tf Activation Function</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#manual-add-layer"><span class="toc-number">1.3.0.7.</span> <span class="toc-text">manual add layer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Basis-TensorFlow"><span class="toc-number">1.3.0.8.</span> <span class="toc-text">Basis TensorFlow</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Speeding-up-training-and-Optimizer"><span class="toc-number">1.3.0.9.</span> <span class="toc-text">Speeding up training and Optimizer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tensorboard"><span class="toc-number">1.3.0.10.</span> <span class="toc-text">Tensorboard</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Advanced-Content"><span class="toc-number">1.4.</span> <span class="toc-text">Advanced Content</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://waylen94.github.io/Diary/2019/09/12/Machine Learning/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://waylen94.github.io/Diary/2019/09/12/Machine Learning/&text=Machine Learning"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://waylen94.github.io/Diary/2019/09/12/Machine Learning/&title=Machine Learning"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://waylen94.github.io/Diary/2019/09/12/Machine Learning/&is_video=false&description=Machine Learning"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Machine Learning&body=Check out this article: https://waylen94.github.io/Diary/2019/09/12/Machine Learning/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://waylen94.github.io/Diary/2019/09/12/Machine Learning/&title=Machine Learning"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://waylen94.github.io/Diary/2019/09/12/Machine Learning/&title=Machine Learning"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://waylen94.github.io/Diary/2019/09/12/Machine Learning/&title=Machine Learning"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://waylen94.github.io/Diary/2019/09/12/Machine Learning/&title=Machine Learning"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://waylen94.github.io/Diary/2019/09/12/Machine Learning/&name=Machine Learning&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://waylen94.github.io/Diary/2019/09/12/Machine Learning/&t=Machine Learning"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/Diary/">Home</a></li>
+         
+          <li><a href="/Diary/about/">About</a></li>
+         
+          <li><a href="/Diary/archives/">Writing</a></li>
+         
+          <li><a href="/Diary/projects_url">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/Diary/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/Diary/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/Diary/lib/jquery/jquery.min.js"></script>
+<script src="/Diary/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/Diary/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/Diary/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
